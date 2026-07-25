@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import "../../styles/Admin.css";
+import "../../styles/App.css";
 
 //admin page
 export default function Admin() {
@@ -8,7 +10,7 @@ export default function Admin() {
     return (
         <div>
         <h1>Admin</h1>
-        <div className = "homeContainer">
+        <div className = "adminContainer">
             <div className = "content">
                 <p> Content TBD </p> </div>
         </div>
@@ -18,7 +20,7 @@ export default function Admin() {
                 <button onClick={() => navigate("/about")}>
                     Manage About Me
                 </button>
-                <button onClick={() => navigate("/projects")}>
+                <button onClick={() => navigate("/admin/projects")}>
                     Manage My Previous Projects
                 </button>
                 <button onClick={() => navigate("/contact")}>
