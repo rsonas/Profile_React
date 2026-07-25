@@ -8,12 +8,8 @@ export default function Admin() {
     const navigate = useNavigate() 
     
     return (
-        <div className = "adminContainer">
+        <div>
         <h1>Admin</h1>
-        <div className = "adminContainer">
-            <div className = "content">
-                <p> Content TBD </p> </div>
-        </div>
 
         {/*Buttons for user to navigate through pages */}
             <div className = "redirects">
