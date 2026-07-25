@@ -12,7 +12,8 @@ export default function ServicesList() {
     //retrieves current list of services
     async function fetchServices() {
         try {
-            const response = await fetch("http://localhost:3000/api/services");
+            const response = await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/services`);
 
             const result = await response.json();
 
@@ -28,7 +29,8 @@ export default function ServicesList() {
 
     //deletes a service by id
     async function deleteService(id) {
-        await fetch(`http://localhost:3000/api/services/${id}`, {
+        await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/services/${id}`, {
             method: "DELETE"
             }
         );

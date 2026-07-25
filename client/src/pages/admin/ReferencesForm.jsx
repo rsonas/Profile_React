@@ -20,7 +20,7 @@ export default function ReferenceForm() {
     async function getReference() {
         try {
             const response = await fetch(
-            `http://localhost:3000/api/references/${id}`
+            `$(import.meta.env.VITE_API_URL}/api/references/${id}`
             );
 
             const result = await response.json();
@@ -56,7 +56,8 @@ export default function ReferenceForm() {
 
         //if it is updating a reference
         if (id) {
-            await fetch(`http://localhost:3000/api/references/${id}`, {
+            await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/references/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type":"application/json"
@@ -66,7 +67,8 @@ export default function ReferenceForm() {
         });
         //if it is submitting a new reference
         }else {
-            await fetch("http://localhost:3000/api/references", {
+            await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/references`, {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"

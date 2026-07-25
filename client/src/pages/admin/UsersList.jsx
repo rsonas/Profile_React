@@ -12,7 +12,8 @@ export default function UsersList() {
     //retrieves current list of users
     async function fetchUsers() {
         try {
-            const response = await fetch("http://localhost:3000/api/users");
+            const response = await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/users`);
 
             const result = await response.json();
 
@@ -28,7 +29,8 @@ export default function UsersList() {
 
     //deletes a user by id
     async function deleteUser(id) {
-        await fetch(`http://localhost:3000/api/users/${id}`, {
+        await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/users/${id}`, {
             method: "DELETE"
             }
         );

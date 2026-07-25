@@ -12,7 +12,8 @@ export default function ProjectsList() {
     //retrieves current list of projects
     async function fetchProjects() {
         try {
-            const response = await fetch("http://localhost:3000/api/projects");
+            const response = await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/projects`);
 
             const result = await response.json();
 
@@ -28,7 +29,8 @@ export default function ProjectsList() {
 
     //deletes a project by id
     async function deleteProject(id) {
-        await fetch(`http://localhost:3000/api/projects/${id}`, {
+        await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/projects/${id}`, {
             method: "DELETE"
             }
         );

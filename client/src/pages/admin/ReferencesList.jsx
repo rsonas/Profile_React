@@ -12,7 +12,8 @@ export default function ReferencesList() {
     //retrieves current list of references
     async function fetchReferences() {
         try {
-            const response = await fetch("http://localhost:3000/api/references");
+            const response = await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/references`);
 
             const result = await response.json();
 
@@ -28,7 +29,8 @@ export default function ReferencesList() {
 
     //deletes a reference by id
     async function deleteReference(id) {
-        await fetch(`http://localhost:3000/api/references/${id}`, {
+        await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/references/${id}`, {
             method: "DELETE"
             }
         );

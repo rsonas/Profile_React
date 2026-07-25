@@ -19,7 +19,7 @@ export default function ServiceForm() {
     async function getService() {
         try {
             const response = await fetch(
-            `http://localhost:3000/api/services/${id}`
+            `$(import.meta.env.VITE_API_URL}/api/services/${id}`
             );
 
             const result = await response.json();
@@ -55,7 +55,8 @@ export default function ServiceForm() {
 
         //if it is updating a service
         if (id) {
-            await fetch(`http://localhost:3000/api/services/${id}`, {
+            await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/services/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type":"application/json"
@@ -65,7 +66,8 @@ export default function ServiceForm() {
         });
         //if it is submitting a new service
         }else {
-            await fetch("http://localhost:3000/api/services", {
+            await fetch(
+            `$(import.meta.env.VITE_API_URL}/api/services`, {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
