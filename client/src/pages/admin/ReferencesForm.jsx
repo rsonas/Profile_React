@@ -3,29 +3,29 @@ import { useNavigate } from "react-router-dom";
 import { useParams} from "react-router-dom";
 import "../../styles/Admin.css";
 
-//projects form
-export default function ProjectForm() {
+//references form
+export default function ReferenceForm() {
 
     const navigate = useNavigate();
     const { id } = useParams();
 
     //creates blank array for content
-    const [project, setProject] = useState({
-        title:"",
-        description:"",
-        completion:""
+    const [reference, setReference] = useState({
+        name:"",
+        testimonial:"",
+        company:""
     });
 
-    //gets a project by its id
-    async function getProject() {
+    //gets a reference by its id
+    async function getReference() {
         try {
             const response = await fetch(
-            `http://localhost:3000/api/projects/${id}`
+            `http://localhost:3000/api/references/${id}`
             );
 
             const result = await response.json();
 
-            setProject(result.data);
+            setReference(result.data);
         }
 
         catch(error) {
@@ -34,16 +34,16 @@ export default function ProjectForm() {
     }
     useEffect(() => {
         if (id) {
-            getProject();
+            getReference();
         }
     }, [id]);
 
     //handles any input
     function handleChange(event) {
         
-        setProject({
+        setReference({
 
-            ...project,
+            ...reference,
             [event.target.name]:event.target.value
         });
     }
@@ -52,61 +52,61 @@ export default function ProjectForm() {
     async function handleSubmit(event) {
         event.preventDefault();
         
-        //console.log(project);
+        //console.log(reference);
 
-        //if it is updating a project
+        //if it is updating a reference
         if (id) {
-            await fetch(`http://localhost:3000/api/projects/${id}`, {
+            await fetch(`http://localhost:3000/api/references/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type":"application/json"
             },
 
-            body:JSON.stringify(project)
+            body:JSON.stringify(reference)
         });
-        //if it is submitting a new project
+        //if it is submitting a new reference
         }else {
-            await fetch("http://localhost:3000/api/projects", {
+            await fetch("http://localhost:3000/api/references", {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
             },
 
-            body:JSON.stringify(project)
+            body:JSON.stringify(reference)
         });
         }
-        navigate("/admin/projects");
+        navigate("/admin/references");
     }
 
     return(
     <div className = "adminContainer">
         <form onSubmit = {handleSubmit}>
             <h1>
-                {id ? "Edit Project" : "Add Project"}
+                {id ? "Edit Reference" : "Add Reference"}
             </h1>
 
             <div className = "formContainer">
-                <label>Title </label>
-                <input name = "title"
-                value = {project.title}
+                <label>Name </label>
+                <input name = "name"
+                value = {reference.name}
                 onChange={handleChange}
                 />
 
-                <label>Description </label>
-                <input name = "description"
-                value = {project.description}
+                <label>Testimonial </label>
+                <input name = "testimonial"
+                value = {reference.testimonial}
                 onChange={handleChange}
                 />
 
-                <label>Date COmpleted </label>
-                <input name = "completion"
-                value = {project.completion}
+                <label>Company </label>
+                <input name = "company"
+                value = {reference.company}
                 onChange={handleChange}
                 />
 
                 <div className = "submitButton">
                     <button type = "submit">
-                    Save Project
+                    Save Reference
                     </button>
                 </div>
                 

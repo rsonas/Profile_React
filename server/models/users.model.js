@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+//will add role to assignment 4 when we add authentication
 const userSchema = new mongoose.Schema({
 
     fName: {
@@ -22,7 +23,7 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    pasword: {
+    password: {
         type: String,
         trim:true
     },

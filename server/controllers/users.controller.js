@@ -80,9 +80,14 @@ export const updateUser = async (req, res, next) => {
     try {
 
         const user = await User.findByIdAndUpdate (
-            req.params.id,
-            req.body,
-            {new: true}
+            req.params.id, {
+                ...req.body,
+                updated: Date.now()
+            }, 
+            {
+                new:true
+            }
+            
         );
 
         if (!user) {

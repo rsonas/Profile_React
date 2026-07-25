@@ -19,7 +19,7 @@ export default function Services() {
                 </div>
 
                 <div className="serviceCategory">
-                    <h2>Python</h2>
+                    <h2>Javascript</h2>
                     <p>Using Javascript to create functional websites</p>
                 </div>
 

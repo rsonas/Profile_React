@@ -3,29 +3,28 @@ import { useNavigate } from "react-router-dom";
 import { useParams} from "react-router-dom";
 import "../../styles/Admin.css";
 
-//projects form
-export default function ProjectForm() {
+//services form
+export default function ServiceForm() {
 
     const navigate = useNavigate();
     const { id } = useParams();
 
     //creates blank array for content
-    const [project, setProject] = useState({
+    const [service, setService] = useState({
         title:"",
-        description:"",
-        completion:""
+        description:""
     });
 
-    //gets a project by its id
-    async function getProject() {
+    //gets a service by its id
+    async function getService() {
         try {
             const response = await fetch(
-            `http://localhost:3000/api/projects/${id}`
+            `http://localhost:3000/api/services/${id}`
             );
 
             const result = await response.json();
 
-            setProject(result.data);
+            setService(result.data);
         }
 
         catch(error) {
@@ -34,16 +33,16 @@ export default function ProjectForm() {
     }
     useEffect(() => {
         if (id) {
-            getProject();
+            getService();
         }
     }, [id]);
 
     //handles any input
     function handleChange(event) {
         
-        setProject({
+        setService({
 
-            ...project,
+            ...service,
             [event.target.name]:event.target.value
         });
     }
@@ -52,61 +51,55 @@ export default function ProjectForm() {
     async function handleSubmit(event) {
         event.preventDefault();
         
-        //console.log(project);
+        //console.log(service);
 
-        //if it is updating a project
+        //if it is updating a service
         if (id) {
-            await fetch(`http://localhost:3000/api/projects/${id}`, {
+            await fetch(`http://localhost:3000/api/services/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type":"application/json"
             },
 
-            body:JSON.stringify(project)
+            body:JSON.stringify(service)
         });
-        //if it is submitting a new project
+        //if it is submitting a new service
         }else {
-            await fetch("http://localhost:3000/api/projects", {
+            await fetch("http://localhost:3000/api/services", {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
             },
 
-            body:JSON.stringify(project)
+            body:JSON.stringify(service)
         });
         }
-        navigate("/admin/projects");
+        navigate("/admin/services");
     }
 
     return(
     <div className = "adminContainer">
         <form onSubmit = {handleSubmit}>
             <h1>
-                {id ? "Edit Project" : "Add Project"}
+                {id ? "Edit Service" : "Add Service"}
             </h1>
 
             <div className = "formContainer">
                 <label>Title </label>
                 <input name = "title"
-                value = {project.title}
+                value = {service.title}
                 onChange={handleChange}
                 />
 
                 <label>Description </label>
                 <input name = "description"
-                value = {project.description}
-                onChange={handleChange}
-                />
-
-                <label>Date COmpleted </label>
-                <input name = "completion"
-                value = {project.completion}
+                value = {service.description}
                 onChange={handleChange}
                 />
 
                 <div className = "submitButton">
                     <button type = "submit">
-                    Save Project
+                    Save Service
                     </button>
                 </div>
                 
