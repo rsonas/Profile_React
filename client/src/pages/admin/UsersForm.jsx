@@ -23,7 +23,7 @@ export default function UserForm() {
     async function getUser() {
         try {
             const response = await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/users/${id}`
+            `${import.meta.env.VITE_API_URL}/api/users/${id}`
             );
 
             const result = await response.json();
@@ -60,7 +60,7 @@ export default function UserForm() {
         //if it is updating a user
         if (id) {
             await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/users/${id}`, {
+            `${import.meta.env.VITE_API_URL}/api/users/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type":"application/json"
@@ -71,7 +71,7 @@ export default function UserForm() {
         //if it is submitting a new user
         }else {
             await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/users`, {
+            `${import.meta.env.VITE_API_URL}/api/users`, {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"

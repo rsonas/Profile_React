@@ -13,7 +13,7 @@ export default function UsersList() {
     async function fetchUsers() {
         try {
             const response = await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/users`);
+            `${import.meta.env.VITE_API_URL}/api/users`);
 
             const result = await response.json();
 
@@ -30,7 +30,7 @@ export default function UsersList() {
     //deletes a user by id
     async function deleteUser(id) {
         await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/users/${id}`, {
+            `${import.meta.env.VITE_API_URL}/api/users/${id}`, {
             method: "DELETE"
             }
         );

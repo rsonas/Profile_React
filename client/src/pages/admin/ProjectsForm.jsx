@@ -20,7 +20,7 @@ export default function ProjectForm() {
     async function getProject() {
         try {
             const response = await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/projects/${id}`
+            `${import.meta.env.VITE_API_URL}/api/projects/${id}`
             );
 
             const result = await response.json();
@@ -57,7 +57,7 @@ export default function ProjectForm() {
         //if it is updating a project
         if (id) {
             await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/projects/${id}`, {
+            `${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type":"application/json"
@@ -68,7 +68,7 @@ export default function ProjectForm() {
         //if it is submitting a new project
         }else {
             await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/projects`, {
+            `${import.meta.env.VITE_API_URL}/api/projects`, {
             method: "POST",
             headers: {
                 "Content-Type":"application/json"

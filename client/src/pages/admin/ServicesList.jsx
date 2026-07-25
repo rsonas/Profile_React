@@ -13,7 +13,7 @@ export default function ServicesList() {
     async function fetchServices() {
         try {
             const response = await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/services`);
+            `${import.meta.env.VITE_API_URL}/api/services`);
 
             const result = await response.json();
 
@@ -30,7 +30,7 @@ export default function ServicesList() {
     //deletes a service by id
     async function deleteService(id) {
         await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/services/${id}`, {
+            `${import.meta.env.VITE_API_URL}/api/services/${id}`, {
             method: "DELETE"
             }
         );

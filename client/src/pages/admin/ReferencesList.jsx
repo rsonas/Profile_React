@@ -13,7 +13,7 @@ export default function ReferencesList() {
     async function fetchReferences() {
         try {
             const response = await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/references`);
+            `${import.meta.env.VITE_API_URL}/api/references`);
 
             const result = await response.json();
 
@@ -30,7 +30,7 @@ export default function ReferencesList() {
     //deletes a reference by id
     async function deleteReference(id) {
         await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/references/${id}`, {
+            `${import.meta.env.VITE_API_URL}/api/references/${id}`, {
             method: "DELETE"
             }
         );

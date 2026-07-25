@@ -13,7 +13,7 @@ export default function ProjectsList() {
     async function fetchProjects() {
         try {
             const response = await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/projects`);
+            `${import.meta.env.VITE_API_URL}/api/projects`);
 
             const result = await response.json();
 
@@ -30,7 +30,7 @@ export default function ProjectsList() {
     //deletes a project by id
     async function deleteProject(id) {
         await fetch(
-            `$(import.meta.env.VITE_API_URL}/api/projects/${id}`, {
+            `${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
             method: "DELETE"
             }
         );
