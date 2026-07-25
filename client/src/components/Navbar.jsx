@@ -19,7 +19,7 @@ export default function Navbar () {
                 <Link to ="/projects">Projects</Link>
                 <Link to ="/references">References</Link>
                 <Link to ="/services">Services</Link>
-                <Link to ="/admin">Admin</Link>
+                <Link to ="/admin">**Admin**</Link>
             </nav>
 
         </p>

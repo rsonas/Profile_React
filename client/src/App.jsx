@@ -6,7 +6,7 @@ import Contact from './pages/Contact';
 import References from './pages/References';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
-import Admin from "./pages/Admin";
+import Admin from "./pages/admin/Admin";
 import Footer from "./components/Footer";
 
 // app page
