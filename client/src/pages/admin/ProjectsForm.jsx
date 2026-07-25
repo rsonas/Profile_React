@@ -88,6 +88,7 @@ export default function ProjectForm() {
             <div className = "formContainer">
                 <label>Title </label>
                 <input name = "title"
+                required
                 value = {project.title}
                 onChange={handleChange}
                 />
